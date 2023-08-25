@@ -1,6 +1,6 @@
 package com.taskmanager.taskmanager.entities;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -22,7 +22,8 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @ManyToMany
+    @JoinTable(name = "user_task", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "task_id"))
     private List<Task> tasks = new ArrayList<>();
 
     @OneToMany(mappedBy = "inviter", cascade = CascadeType.ALL)

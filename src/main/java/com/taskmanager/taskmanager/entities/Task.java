@@ -1,6 +1,6 @@
 package com.taskmanager.taskmanager.entities;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class Task {
     @Column(nullable = false)
     private String title;
     @Column(nullable = false)
-    private String description = null;
+    private String description = "";
     @Column(nullable = false)
     private Date dueDate;
 
@@ -29,6 +29,7 @@ public class Task {
     @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
     private List<Invitation> invitations = new ArrayList<>();
 
+    @Enumerated(EnumType.STRING)
     private TaskStatus status;
 
 }

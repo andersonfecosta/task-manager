@@ -1,6 +1,6 @@
 package com.taskmanager.taskmanager.entities;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -24,5 +24,6 @@ public class Invitation {
     @JoinColumn(name = "invitee_id")
     private User invitee;
 
+    @Enumerated(EnumType.STRING)
     private InvitationStatus status;
 }
